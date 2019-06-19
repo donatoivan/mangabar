@@ -86,11 +86,17 @@ app.get('/manga/genres/:id', (req, res) => {
       return response
     })
     .then((data) => {
-      res.render('index', {
-        data: data.data.manga
+      Manga.find({})
+      .then( allManga => {
+        res.render('index', {
+          data: data.data.manga,
+          lib: allManga
+        })
       })
+      // res.render('index', {
+      //   data: data.data.manga
     })
-})
+  })
 
 
 app.post('/manga/:id', (req, res) => {

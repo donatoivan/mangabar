@@ -2,6 +2,9 @@
   <% include head %>
   <body>
   <% include navbar %>
+  <div id="loading">
+      <h1>loading</h1>
+  </div>
   <% lib.forEach(element => { %>
     <p><%= element.title%></p>
     <%= element.mal_id %>
