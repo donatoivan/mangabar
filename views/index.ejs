@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-  <% include head %>
-  <body>
+<% include head %>
+
+<body>
   <% include navbar %>
-  <div class="container row">
+  <div class="headertitle">
+    Home Page
+  </div>
+  <div id="specialcontainer" class="container row">
     <% data.forEach(element => { %>
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <a href="<%= element.url %>"> My Anime List </a>
-            <h5 class="card-title"><%= element.title %></h5>
-            <img src="<%= element.image_url %>" alt="">
-            <%= element.synopsis %>
-            <%= element.volumes %>
-            <a href="/manga/<%= element.mal_id %>">More Info</a>
-          </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= element.title %></h5>
+          <img src="<%= element.image_url %>" alt="">
+          <div class="card-text"><%= element.synopsis %></div>
+          <div class="card-text"><%= element.volumes %></div>
+          <a class="font" href="/manga/<%= element.mal_id %>">More Info</a>
+          <a class="font" href="<%= element.url %>">Visit MyAnimeList</a>
         </div>
-      </div>  
+      </div>
+    </div>
     <% }); %>
   </div>
   <% include scripts %>
-  </body>
+</body>
+
 </html>

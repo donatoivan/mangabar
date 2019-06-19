@@ -1,11 +1,10 @@
 // const fetch = require('node-fetch');
 
-
 // async function getAPI() {
 //   const response = await fetch('/api');
 //   const json = await response.json();
 
-  const ghibli = fetch("https://ghibliapi.herokuapp.com/films");
+const ghibli = fetch("https://ghibliapi.herokuapp.com/films");
 
 ghibli
   .then((response) => {
