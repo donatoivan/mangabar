@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
 /* index */
 * {
   margin: 0;
@@ -16,6 +17,7 @@
   background-image: url("/public/images/39039.jpg");
   background-repeat: no-repeat;
 }
+
 body {  
   display: flex;
   justify-content: center;
@@ -62,6 +64,18 @@ body {
   align-items: center;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+#genredots {
+  padding-left: 30px; 
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
 /* navbar */
 .navbar {
   background-image: url("/images/imageedit_1_2328119892.png");
@@ -78,6 +92,7 @@ body {
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
 }
+
 /* search */
 .headertitle {
   height: 4.5rem;
@@ -90,4 +105,21 @@ body {
 }
 #specialcontainer {
   height: calc(100% - 9rem);
+}
+
+#centercontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#noborder {
+  border: none;
+  padding: 0px;
+  padding-top: 10px;
+}
+
+/* library */
+.library {
+  display: none;
 }

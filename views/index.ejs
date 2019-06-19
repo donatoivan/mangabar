@@ -3,17 +3,24 @@
 
 <body>
   <% include navbar %>
-  <div class="headertitle">
-    Home Page
+  <div class="field">
+    <input type="checkbox" id="showlibrary"> Show Library
+    <br>
   </div>
-  <% lib.forEach(element => { %>
+  <div class="library">
+    <% lib.forEach(element => { %>
     <p><%= element.title%></p>
     <%= element.mal_id %>
     <form action="/manga/<%= element.mal_id %>?_method=DELETE" method="post" class="form-inline my-2 my-lg-0">
-    <input type="hidden" name="_method" value="DELETE">
+      <input type="hidden" name="_method" value="DELETE">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete from Library</button>
     </form>
-  <% }); %>
+    <% }); %>
+  </div>
+  <br>
+  <div class="headertitle">
+    Home Page
+  </div>
   <div id="specialcontainer" class="container row">
     <% data.forEach(element => { %>
     <div class="col-sm-6">
@@ -31,6 +38,20 @@
     <% }); %>
   </div>
   <% include scripts %>
+
+  <script>
+    const checkBox = document.querySelector('#showlibrary')
+    const library = document.querySelector('.library')
+    console.log(checkBox)
+    checkBox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        library.style.display = 'block';
+      }
+      else {
+        library.style.display = 'none';
+      }
+    })
+  </script>
 </body>
 
 </html>
