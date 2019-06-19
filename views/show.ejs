@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+  <% include head %>
+  <body>
+  <% include navbar %>
+  <div class="container row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <a href="<%= data.url %>"> My Anime List </a>
+          <h5 class="card-title"><%= data.title %></h5>
+          <h5 class="card-title"><%= data.title_japanese %></h5>
+          <img src="<%= data.image_url %>" alt="">
+          <p>Synopsis: <%= data.synopsis %></p>
+          <h6>Volumes: <%= data.volumes %></h6>
+          <h6>Published: <%= data.published.string %></h6>
+          <h6>User Score: <%= data.score %></h6>
+          <h6>Background: <%= data.background %></h6>
+          <ul>Genres:
+          <% data.genres.forEach(element => { %>
+            <li><%= element.name %></li>
+          <% }); %>
+          </ul>
+        </div>
+      </div>
+    </div>        
+  </div>
+  <% include scripts %>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <% include head %>
+  <body>
+  <% include navbar %>
+  <h1>Search Results</h1>
+  <div class="container row">
+    <% data.forEach(element => { %>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <a href="<%= element.url %>"> My Anime List </a>
+            <h5 class="card-title"><%= element.title %></h5>
+            <img src="<%= element.image_url %>" alt="">
+            <%= element.synopsis %>
+            <%= element.volumes %>
+            <a href="/manga/<%= element.mal_id %>">More Info</a>
+          </div>
+        </div>
+      </div>    
+    <% }); %>
+  </div>
+  <% include scripts %>
+  </body>
+</html>
