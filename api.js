@@ -4,10 +4,13 @@ const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose');
 
-const Manga = require('./models/manga')
+const Manga = require('./models/manga');
+const methodOverride = require('method-override');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
+app.use(methodOverride('_method'));
 
 
 app.use(express.json());
@@ -27,13 +30,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, (err) => {
  })
 
 app.get('/manga', (req, res, next) => {
-  // const ghibli = axios.get("https://ghibliapi.herokuapp.com/films");
-  
-    let myLib = []
-   
-
   const manga = axios.get('https://api.jikan.moe/v3/genre/manga/1/');
-  // ghibli
   manga
   .then((response) => {
     return response
@@ -103,20 +100,15 @@ app.post('/manga/:id', (req, res) => {
   const singleManga = axios.get(`https://api.jikan.moe/v3/manga/${id}`)
   singleManga
     .then((response) => {
-      // console.log(response)
       return response
     })
     .then((data) => {
-      // detailsOfObject.push(data)
-      // console.log(data)
-      // console.log(detailsOfObject)
-      const { title, synopsis, image_url, volumes, genres } = data.data
+      const { title, synopsis, image_url, volumes, genres, mal_id } = data.data
 
-      Manga.create({ title, synopsis, image_url, volumes, genres })
+      Manga.create({ title, synopsis, image_url, volumes, genres, mal_id })
       .then( newManga => {
-        // res.json(newPoke)
         console.log('Manga created')
-        console.log(newManga)
+        // console.log(newManga)
         res.redirect('/manga')
       })
       .catch( err => res.json(err))
@@ -124,6 +116,20 @@ app.post('/manga/:id', (req, res) => {
      
 })
 
+
+app.delete('/manga/:id', (req, res) => {
+  const { id } = req.params
+  console.log(req.params)
+  console.log(id)
+  Manga.findOneAndDelete({mal_id: id })
+  .then( doc => {
+    console.log('item to delete')
+    console.log(doc)
+    if(!doc) return res.send(`No manga found at id ${id}`)
+      res.redirect('/manga')
+    })
+  .catch( err => res.json(err))
+})
 
 
 

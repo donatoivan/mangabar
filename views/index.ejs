@@ -2,9 +2,13 @@
   <% include head %>
   <body>
   <% include navbar %>
-  <%= "hello" %>
   <% lib.forEach(element => { %>
     <p><%= element.title%></p>
+    <%= element.mal_id %>
+    <form action="/manga/<%= element.mal_id %>?_method=DELETE" method="post" class="form-inline my-2 my-lg-0">
+    <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete from Library</button>
+    </form>
   <% }); %>
   <div class="container row">
     <% data.forEach(element => { %>
@@ -23,6 +27,5 @@
     <% }); %>
   </div>
   <% include scripts %>
-  <%# <script src="./jsScripts"></script> %>
   </body>
 </html>

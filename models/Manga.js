@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const mangaSchema = new mongoose.Schema({
+    mal_id: Number,
     title: String,
     synopsis: String,
     image_url: String,
