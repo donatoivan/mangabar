@@ -1,33 +1,49 @@
 <!DOCTYPE html>
-  <% include head %>
-  <body>
+<% include head %>
+
+<body>
   <% include navbar %>
-  <div class="container row">
-    <div class="col-sm-4">
+  <div id="centercontainer" class="container row">
+    <div class="col-sm-7">
       <div class="card">
         <div class="card-body">
-          <a href="<%= data.url %>"> My Anime List </a>
-          <h5 class="card-title"><%= data.title %></h5>
+          <h5 id="noborder" class="card-title"><%= data.title %></h5>
           <h5 class="card-title"><%= data.title_japanese %></h5>
           <img src="<%= data.image_url %>" alt="">
-          <p>Synopsis: <%= data.synopsis %></p>
-          <h6>Volumes: <%= data.volumes %></h6>
-          <h6>Published: <%= data.published.string %></h6>
-          <h6>User Score: <%= data.score %></h6>
-          <h6>Background: <%= data.background %></h6>
-          <ul>Genres:
-          <% data.genres.forEach(element => { %>
-            <li><%= element.name %></li>
-          <% }); %>
-          <%= data.mal_id %>
-          <form action="/manga/<%= data.mal_id %> " method="post" class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to Library</button>
-          </form>
-          </ul>
+          <div class="card-text">
+            <p>Synopsis:<br> <%= data.synopsis %></p>
+          </div>
+          <div class="card-text">
+            <h6>Volumes:<br> <%= data.volumes %></h6>
+          </div>
+          <div class="card-text">
+            <h6>Published:<br> <%= data.published.string %></h6>
+          </div>
+          <div class="card-text">
+            <h6>User Score:<br> <%= data.score %></h6>
+          </div>
+          <div class="card-text">
+            <h6>Background:<br> <%= data.background %></h6>
+          </div>
+          <div id="genredots" class="card-text">
+            <ul>Genres:
+              <% data.genres.forEach(element => { %>
+              <li><%= element.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+          <a class="font" href="<%= data.url %>">Visit MyAnimeList</a>
+          <br>
+          <div class="buttons">
+            <form action="/manga/<%= data.mal_id %> " method="post" class="form-inline my-2 my-lg-0">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to Library</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>        
+    </div>
   </div>
   <% include scripts %>
-  </body>
+</body>
+
 </html>
