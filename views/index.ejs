@@ -2,6 +2,10 @@
   <% include head %>
   <body>
   <% include navbar %>
+  <%= "hello" %>
+  <% lib.forEach(element => { %>
+    <p><%= element.title%></p>
+  <% }); %>
   <div class="container row">
     <% data.forEach(element => { %>
       <div class="col-sm-4">
@@ -19,5 +23,6 @@
     <% }); %>
   </div>
   <% include scripts %>
+  <%# <script src="./jsScripts"></script> %>
   </body>
 </html>

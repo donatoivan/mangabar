@@ -19,6 +19,10 @@
           <% data.genres.forEach(element => { %>
             <li><%= element.name %></li>
           <% }); %>
+          <%= data.mal_id %>
+          <form action="/manga/<%= data.mal_id %> " method="post" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to Library</button>
+          </form>
           </ul>
         </div>
       </div>
